@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins:ital,wght@0,400;0,600;1,400&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: white;
+}
+
+body {
+    background-color: rgb(31, 25, 25);
+    padding: 2rem;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+}
+
+.heading {
+    font-size: 2.5rem;
+    border: 5px solid rgb(7, 212, 7);
+    width: 70%;
+    text-align: center;
+    padding-block: 1rem;
+    color: white;
+}
+
+ul li {
+    color: #e4e3e3;
+    font-size: 1.2rem;
+    line-height: 1.7;
+}
+
+.upload {
+    margin-top: 2rem;
+    height: 110px;
+}
+
+.file-upload-container {
+    width: 200px;
+    height: 120px;
+    border: 2px dashed;
+    border-radius: 10px;
+    padding: 0rem 1rem;
+    text-align: center;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.file-upload-input {
+    display: none;
+}
+
+.file-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+}
+
+.file-box {
+    padding: 1rem 2rem;
+    border: 2px solid;
+}
+
+.close-btn {
+    border: none;
+    margin-left: 0.7rem;
+    font-size: 1.2rem;
+    background: white;
+    padding: 0rem 0.5rem;
+    color: black;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.start-btn {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
