@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -7,14 +8,17 @@ const Home = () => {
     const uploadFile = (e) => {
         let file = e.target.files[0];
         setFile(file);
-        console.log(file);
     }
     const removeFile = () => {
         setFile(null);
     }
     const startTest = () => {
         if (file) {
-            navigate("/test");
+            const req = {
+                "file": file
+            }
+            console.log(req.file);
+            axios.post("http://localhost:8000/upload", req).then(() => navigate("/test")).catch(err => console.log("Error: ", err));
         } else {
             window.alert("Upload file First!");
         }
