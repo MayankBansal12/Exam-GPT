@@ -1,28 +1,53 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import * as pdfjs from 'pdfjs-dist';
+import 'pdfjs-dist/build/pdf.worker.entry';
 
 const Home = () => {
     const navigate = useNavigate();
     const [file, setFile] = useState(null);
-    const uploadFile = (e) => {
-        let file = e.target.files[0];
-        setFile(file);
-    }
+    const [pdfText, setPdfText] = useState('');
+
+    const uploadFile = async (e) => {
+        let uploadedFile = e.target.files[0];
+        setFile(uploadedFile);
+
+        const reader = new FileReader();
+        reader.onload = async (event) => {
+            const pdfData = new Uint8Array(event.target.result);
+            try {
+                const pdf = await pdfjs.getDocument({ data: pdfData }).promise;
+                let text = '';
+                for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+                    const page = await pdf.getPage(pageNum);
+                    const pageText = await page.getTextContent();
+                    text += pageText.items.map((item) => item.str).join(' ');
+                }
+                setPdfText(text);
+            } catch (error) {
+                console.error('Error extracting text from PDF:', error);
+            }
+        };
+        reader.readAsArrayBuffer(uploadedFile);
+    };
+
     const removeFile = () => {
         setFile(null);
-    }
+        setPdfText('');
+    };
+
     const startTest = () => {
         if (file) {
             const req = {
-                "file": file
-            }
-            console.log(req.file);
-            axios.post("http://localhost:8000/upload", req).then(() => navigate("/test")).catch(err => console.log("Error: ", err));
+                text: pdfText,
+            };
+            axios.post('http://localhost:8000/upload', req)
+            navigate("/test");
         } else {
-            window.alert("Upload file First!");
+            window.alert('Upload file First!');
         }
-    }
+    };
 
     return (
         <div className="home">

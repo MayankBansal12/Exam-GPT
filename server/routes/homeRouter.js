@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
 
-router.post("/upload", (req, res) => {
-  const file = req.body.file;
-  console.log("File Received: ", file);
+router.route("/upload").post((req, res) => {
+  const text = req.body.text;
+  console.log("Text Received: ", text);
 });
 
 module.exports = router;
