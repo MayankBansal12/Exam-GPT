@@ -24,7 +24,7 @@ const Home = () => {
                     const pageText = await page.getTextContent();
                     text += pageText.items.map((item) => item.str).join(' ');
                 }
-                setPdfText(text);
+                setPdfText(text.trim());
             } catch (error) {
                 console.error('Error extracting text from PDF:', error);
             }
