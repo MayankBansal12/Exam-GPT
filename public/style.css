@@ -8,17 +8,22 @@
 }
 
 body {
-    background-color: rgb(31, 25, 25);
-    padding: 2rem;
+    background-color: #1f1919;
     font-family: 'Montserrat', sans-serif;
 }
 
+::-webkit-scrollbar {
+    display: none;
+}
+
+/* Home */
 .home {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 3rem;
+    padding: 2rem;
 }
 
 .heading {
@@ -88,4 +93,39 @@ ul li {
     font-size: 1rem;
     border-radius: 5px;
     cursor: pointer;
+}
+
+/* Test */
+.test-container {
+    width: 100%;
+    height: 90vh;
+    border-radius: 10px;
+}
+
+.test-container h2 {
+    text-align: center;
+    border-radius: 10px 10px 0 0;
+    background-color: #0d0c0c;
+    width: 100%;
+    padding: 1rem;
+}
+
+.conversation {
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+    padding: 1rem;
+}
+
+.chat {
+    padding: 2rem;
+    line-height: 1.75;
+}
+
+.gpt {
+    background: #0d0c0c;
+}
+
+.user {
+    background: #403f3f;
 }
