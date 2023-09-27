@@ -1,3 +1,4 @@
+/* Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins:ital,wght@0,400;0,600;1,400&display=swap');
 
 * {
@@ -112,9 +113,10 @@ ul li {
 
 .conversation {
     width: 100%;
-    height: 100%;
+    height: 90%;
     overflow: scroll;
-    padding: 1rem;
+    margin-block: 1rem;
+    padding-inline: 1rem;
 }
 
 .chat {
@@ -128,4 +130,25 @@ ul li {
 
 .user {
     background: #403f3f;
+}
+
+.end-btn {
+    width: 75px;
+    background-color: #ed2a18;
+    border: none;
+    padding: 0.35rem;
+    border-radius: 5rem;
+    font-size: 1rem;
+}
+
+.end-btn:hover {
+    cursor: pointer;
+    background-color: #ea4335;
+}
+
+.mic-btn {
+    background: transparent;
+    padding: 0.25rem;
+    margin-inline: 0.5rem;
+    cursor: pointer;
 }
