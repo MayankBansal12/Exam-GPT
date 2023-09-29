@@ -31,12 +31,18 @@ router.route("/upload").post((req, res) => {
     role: "user",
     content: `Here are the details about topic: ${text}`,
   });
-  console.log(messages);
-  // Start the text
-  // Get input from user
-  // Give it to response function to get response
 });
 
-// Create a function to handle conversation: Call input to get input from user and output to get response from gpt and send it back to user
+router.route("/response").post(async (req, res) => {
+  const { input } = req.body;
+  try {
+    const output = await response(input);
+    return res
+      .status(200)
+      .json({ msg: "Response Successful!", response: output });
+  } catch (err) {
+    return res.status(400).json({ msg: "Error!", error: err });
+  }
+});
 
 module.exports = router;

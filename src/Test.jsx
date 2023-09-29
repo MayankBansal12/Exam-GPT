@@ -1,23 +1,33 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React from 'react';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 
 const Test = () => {
-    const [text, setText] = useState("");
-
     const {
         transcript,
         listening,
         browserSupportsSpeechRecognition
     } = useSpeechRecognition();
 
+    const generateResponse = (input) => {
+        console.log("Input Received:", input);
+        const req = {
+            input: input
+        }
+        if (input) {
+            axios.post('http://localhost:8000/response', req).then(res => {
+                console.log(res.data.response);
+            })
+        }
+    }
+
     const handleStartListening = () => SpeechRecognition.startListening({ continuous: true, interimResults: true });
 
     const handleStopListening = () => {
         SpeechRecognition.stopListening();
-        setText(transcript);
-        console.log(transcript);
+        generateResponse(transcript);
     };
+
     return (
         <div className="test-container">
             <h2>Exam Conversation</h2>
