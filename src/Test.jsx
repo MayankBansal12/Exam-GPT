@@ -7,6 +7,7 @@ const Test = () => {
         "role": "gpt",
         "message": "Say 'I am ready to start' whenever you are ready to start the exam"
     }]);
+    const [speaking, setSpeaking] = useState(false);
 
     const {
         transcript,
@@ -28,13 +29,14 @@ const Test = () => {
 
             try {
                 const res = await axios.post('http://localhost:8000/response', req);
+                const response = res.data.response;
+                gptSpeak(response);
                 const gptMessage = {
                     "role": "gpt",
-                    "message": res.data.response
+                    "message": response
                 };
                 setChats((prevChats) => [...prevChats, gptMessage]);
             } catch (error) {
-                // Handle any errors from the API request
                 console.error("API request error:", error);
             }
         }
@@ -45,6 +47,22 @@ const Test = () => {
     const handleStopListening = () => {
         SpeechRecognition.stopListening();
         generateResponse(transcript);
+    };
+
+    const gptSpeak = (text) => {
+        if (!speaking) {
+            const utterance = new SpeechSynthesisUtterance(text);
+
+            speechSynthesis.speak(utterance);
+            setSpeaking(true);
+
+            utterance.onend = () => {
+                setSpeaking(false);
+            };
+        } else {
+            speechSynthesis.cancel();
+            setSpeaking(false);
+        }
     };
 
     return (
