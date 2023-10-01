@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 const Test = () => {
     const navigate = useNavigate();
     const { pdfText, setTextValue } = useContext(TextContext);
+    
     // Chat array saving the conversation
     const [chats, setChats] = useState([
         {
@@ -18,7 +19,7 @@ const Test = () => {
         },
         {
             role: "user",
-            content: `Here are the details about topic: ${pdfText}. Strictly follow the guidelines passed in previous prompt throughout the conversation.`
+            content: `Here are the details about topic: ${pdfText}. Follow all guidelines, ask questions one by one like an examiner.`
         },
         {
             role: "assistant",
