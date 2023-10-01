@@ -1,3 +1,5 @@
+// Home.jsx -> '/' route
+
 import axios from 'axios';
 import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -10,6 +12,7 @@ const Home = () => {
     const [file, setFile] = useState(null);
     const { pdfText, setTextValue } = useContext(TextContext);
 
+    // Uploading the file and extracting the text from it
     const uploadFile = async (e) => {
         let uploadedFile = e.target.files[0];
         setFile(uploadedFile);
@@ -38,6 +41,7 @@ const Home = () => {
         setTextValue("");
     };
 
+    // Starting the test
     const startTest = () => {
         if (file) {
             axios.get(process.env.REACT_APP_SERVER_URL);

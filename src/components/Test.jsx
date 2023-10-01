@@ -1,3 +1,5 @@
+// Rendering the test component -> /test
+
 import axios from "axios";
 import React, { useContext, useState } from "react";
 import SpeechRecognition, { useSpeechRecognition } from "react-speech-recognition";
@@ -7,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 const Test = () => {
     const navigate = useNavigate();
     const { pdfText, setTextValue } = useContext(TextContext);
+    // Chat array saving the conversation
     const [chats, setChats] = useState([
         {
             role: "user",
@@ -32,6 +35,7 @@ const Test = () => {
         resetTranscript
     } = useSpeechRecognition();
 
+    // Sending input to server and generating response
     const generateResponse = async (input) => {
         if (input) {
             const userMessage = {
@@ -45,7 +49,7 @@ const Test = () => {
             };
 
             try {
-                const res = await axios.post(process.env.REACT_APP_SERVER_URL+"/response", req);
+                const res = await axios.post(process.env.REACT_APP_SERVER_URL + "/response", req);
                 const response = res.data.response;
 
                 gptSpeak(response);
@@ -63,6 +67,7 @@ const Test = () => {
         }
     };
 
+    // Listening function related to speech to text
     const handleStartListening = () => {
         SpeechRecognition.startListening({ continuous: true, interimResults: true });
         resetTranscript();
@@ -73,6 +78,7 @@ const Test = () => {
         generateResponse(transcript);
     };
 
+    // converting text response to speech
     const gptSpeak = (text) => {
         if (!speaking) {
             const utterance = new SpeechSynthesisUtterance(text);
@@ -89,6 +95,7 @@ const Test = () => {
         }
     };
 
+    // Ending all running process to end the exam
     const endExam = () => {
         SpeechRecognition.stopListening();
         speechSynthesis.cancel();

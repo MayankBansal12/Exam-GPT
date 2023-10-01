@@ -20,6 +20,7 @@ const App = () => {
   );
 };
 
+// Protecting /test route
 const PrivateRoute = ({ element }) => {
   const { pdfText } = useContext(TextContext);
   if (!pdfText) {

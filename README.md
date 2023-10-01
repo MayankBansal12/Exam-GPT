@@ -1,70 +1,80 @@
-# Getting Started with Create React App
+<h1 align="center"> ExamGPT - Conduct Oral Exam using ChatGPT </h1>
+<br />
+ExamGPT is a powerful tool that simplifies the process of conducting oral exams. It leverages the GPT-3.5 model from OpenAI to act as an interviewer, asking questions based on a provided topic. This project combines speech recognition, text-to-speech, and PDF handling to create a seamless oral exam experience.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Features
 
-## Available Scripts
+- **Topic-Based Questions**: Input a PDF document on the desired topic, and ExamGPT will generate relevant questions for the oral exam.
 
-In the project directory, you can run:
+- **Transcription**: As the AI interviewer asks questions, the transcription of the speech will be displayed on the screen.
 
-### `npm start`
+- **Recording Responses**: Easily record your responses by clicking the microphone icon. When you're done, stop recording.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Text-to-Speech**: ExamGPT uses the `speechSynthesis` library to convert text into speech for a natural conversational experience.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Speech-to-Text**: The project includes `react-speech-recognition` library to transcribe spoken responses.
 
-### `npm test`
+## Getting Started
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Set up the client and server as described in the Installation section.
+2. Provide a PDF document on the desired topic to the client.
+3. Make sure the document is not too long and contains text. Must have a .pdf extension.
+4. Start the oral exam, and ExamGPT will generate questions and provide transcriptions.
+5. Response can be recorded using the mic button provided. Speak loudly and clearly and don't take pauses.
+6. End the test by clicking the end button provided in the centre of the screen.
 
-### `npm run build`
+## Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+These are the steps to set up the project locally:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Client (Frontend)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Clone the repository: `git clone [repository URL]`
+2. Navigate to the client directory: `cd client`
+3. Install dependencies: `npm i`
+4. Start the client: `npm start` (port 3000)
 
-### `npm run eject`
+Example `.env` file:
+REACT_APP_SERVER_URL=Server_URL
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Server (Backend)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Navigate to the server directory: `cd server`.
+2. Install dependencies: `npm install`
+3. Start the server: `npm start` (port 8000)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Example `.env` file:
+API_KEY=Your_OpenAI_API_Key
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Tech Stack
 
-## Learn More
+- **Frontend**: React.js
+- **Backend**: Using Express.js and Node.js
+- **PDF Handling**: pdfjs-dist library to extract the text from pdf
+- **Speech-to-Text**: React Speech Recognition Library
+- **Text-to-Speech**: Using speechSynthesis
+- **AI Response**: Generated using OpenAI GPT-3.5 model
+- **State Management**: useContext Api
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Demo
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Things to Note
 
-### Code Splitting
+- The project uses OpenAI API which is a paid API. However, you will get a few free credits when you sign up for the first time.
+- The backend is hosted on render which may take a couple of minutes to load. When you visit the site for the first time there may be issues while receiving initial responses.
+- Don't use Bluetooth headphones or wired earphones to record the answer. Use the original mic and speak clearly while staying close to the mic.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Contributing
 
-### Analyzing the Bundle Size
+Contributions to ExamGPT are welcome! If you'd like to contribute, please follow the best open-source and contributing practices.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+<!-- ## License
+This project is licensed under the [MIT License](LICENSE). -->
 
-### Making a Progressive Web App
+## Contact
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+If you have any questions or need support, feel free to contact us at mayankbansal125@gmail.com
 
-### Advanced Configuration
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<!--[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)-->

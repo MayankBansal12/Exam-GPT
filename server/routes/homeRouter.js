@@ -15,10 +15,12 @@ const response = async (chats) => {
   return completion.choices[0]?.message?.content;
 };
 
+// Checking the server
 router.route("/").get((req, res) => {
   res.status(200).send("Working!!");
 });
 
+// Sending the response to client
 router.route("/response").post(async (req, res) => {
   const { chats } = req.body;
   try {
