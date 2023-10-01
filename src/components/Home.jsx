@@ -1,13 +1,14 @@
 import axios from 'axios';
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import * as pdfjs from 'pdfjs-dist';
 import 'pdfjs-dist/build/pdf.worker.entry';
+import { TextContext } from '../context/PdfTextContext';
 
 const Home = () => {
     const navigate = useNavigate();
     const [file, setFile] = useState(null);
-    const [pdfText, setPdfText] = useState('');
+    const { pdfText, setTextValue } = useContext(TextContext);
 
     const uploadFile = async (e) => {
         let uploadedFile = e.target.files[0];
@@ -18,15 +19,15 @@ const Home = () => {
             const pdfData = new Uint8Array(event.target.result);
             try {
                 const pdf = await pdfjs.getDocument({ data: pdfData }).promise;
-                let text = '';
+                let text = "";
                 for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
                     const page = await pdf.getPage(pageNum);
                     const pageText = await page.getTextContent();
                     text += pageText.items.map((item) => item.str).join(' ');
                 }
-                setPdfText(text.trim());
+                setTextValue(text.trim());
             } catch (error) {
-                console.error('Error extracting text from PDF:', error);
+                console.error("Error extracting text from PDF:", error);
             }
         };
         reader.readAsArrayBuffer(uploadedFile);
@@ -34,18 +35,14 @@ const Home = () => {
 
     const removeFile = () => {
         setFile(null);
-        setPdfText('');
+        setTextValue("");
     };
 
     const startTest = () => {
         if (file) {
-            const req = {
-                text: pdfText,
-            };
-            axios.post('http://localhost:8000/upload', req)
             navigate("/test");
         } else {
-            window.alert('Upload file First!');
+            window.alert("Upload file First!");
         }
     };
 
@@ -75,7 +72,7 @@ const Home = () => {
                 </div>)}
             </div>
             <div>
-                <button className="start-btn" style={{ backgroundColor: file ? "green" : "grey" }} onClick={startTest}>Start Test</button>
+                <button className="start-btn" style={{ backgroundColor: file ? "green" : "grey" }} onClick={startTest} disabled={!file}>Start Test</button>
             </div>
         </div>
     )
