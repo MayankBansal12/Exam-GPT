@@ -15,10 +15,14 @@ const response = async (chats) => {
   return completion.choices[0]?.message?.content;
 };
 
+router.route("/").get((req, res) => {
+  res.status(200).send("Working!!");
+});
+
 router.route("/response").post(async (req, res) => {
   const { chats } = req.body;
   try {
-    const output = await response(chats);
+    const output = await response(chats.filter((chat) => chat.role === "user"));
     return res
       .status(200)
       .json({ msg: "Response Successful!", response: output });

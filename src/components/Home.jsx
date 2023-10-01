@@ -40,6 +40,7 @@ const Home = () => {
 
     const startTest = () => {
         if (file) {
+            axios.get(process.env.REACT_APP_SERVER_URL);
             navigate("/test");
         } else {
             window.alert("Upload file First!");
@@ -50,11 +51,12 @@ const Home = () => {
         <div className="home">
             <h1 className="heading">Oral Exam</h1>
             <ul>
-                <li>To start the oral exam you will have to upload a pdf containing example questions</li>
+                <li>To start the oral exam you will have to upload a pdf containing details regarding the topics</li>
+                <li>Make sure the pdf is not too long and contains only text and not images.</li>
                 <li>After pdf is uploaded, click on Start Test to start</li>
                 <li>Questions will be asked by AI bot and transcription will be available on screen</li>
                 <li>Answer the questions clearly so that speech can be recognized.</li>
-                <li>Conversation will be transcripted which will be visible on the screen</li>
+                <li>Click on mic button to record the speech and end button to end the exam</li>
             </ul>
             <div className="upload">
                 {(!file && <label className="file-upload-container">
