@@ -9,7 +9,8 @@ import { useNavigate } from "react-router-dom";
 const Test = () => {
     const navigate = useNavigate();
     const { pdfText, setTextValue } = useContext(TextContext);
-    
+    const [isgenerating, setIsGenerating] = useState(false);
+
     // Chat array saving the conversation
     const [chats, setChats] = useState([
         {
@@ -48,6 +49,7 @@ const Test = () => {
             const req = {
                 chats: [...chats, userMessage],
             };
+            setIsGenerating(true);
 
             try {
                 const res = await axios.post(process.env.REACT_APP_SERVER_URL + "/response", req);
@@ -60,6 +62,7 @@ const Test = () => {
                     content: response,
                 };
                 setChats((prevChats) => [...prevChats, gptMessage]);
+                setIsGenerating(false);
             } catch (error) {
                 console.error("API request error:", error);
             }
@@ -112,6 +115,8 @@ const Test = () => {
                 {chats.slice(2).map((chat, i) => (
                     <div key={i} className={"chat " + chat.role}>{chat.content}</div>
                 ))}
+                {isgenerating && <div className="chat user" style={{ "backgroundColor": "#0d0c0c" }}>Generating Response... Please hold on</div>}
+
                 {!browserSupportsSpeechRecognition ? <span>Browser doesn't support speech recognition.</span> : (<div className="chat user" style={{ "textAlign": "center", "backgroundColor": "#252424" }}>
                     {!listening ? <span>Click on  <button className="material-symbols-outlined mic-btn" onClick={handleStartListening} disabled={listening || speaking}>mic</button>  to start recording your answer</span> : <span>Recording...  Click <button className="material-symbols-outlined mic-btn" onClick={handleStopListening} disabled={!listening}>
                         stop_circle

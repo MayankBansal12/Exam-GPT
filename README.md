@@ -57,6 +57,13 @@ API_KEY=Your_OpenAI_API_Key
 - **State Management**: useContext Api
 
 ## Demo
+- You can check the project video [here](https://www.youtube.com/watch?v=bMulW8YcDTA)
+- You can visit the site [here](https://examgpt.vercel.app/)
+- Screenshots for the site are available below: 
+
+![](https://res.cloudinary.com/dwuyp1nss/image/upload/v1696229628/Website%20Demo/Home_bc0k8e.png)
+![](https://res.cloudinary.com/dwuyp1nss/image/upload/v1696229657/Website%20Demo/Not_Recorded_p5boka.png)
+![](https://res.cloudinary.com/dwuyp1nss/image/upload/v1696229650/Website%20Demo/Test_vgszre.png)
 
 ## Things to Note
 
