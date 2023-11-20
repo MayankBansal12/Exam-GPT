@@ -65,22 +65,18 @@ API_KEY=Your_OpenAI_API_Key
 ![](https://res.cloudinary.com/dwuyp1nss/image/upload/v1696229657/Website%20Demo/Not_Recorded_p5boka.png)
 ![](https://res.cloudinary.com/dwuyp1nss/image/upload/v1696229650/Website%20Demo/Test_vgszre.png)
 
-## Things to Note
-
-- The project uses OpenAI API which is a paid API. However, you will get a few free credits when you sign up for the first time.
-- The backend is hosted on render which may take a couple of minutes to load. When you visit the site for the first time there may be issues while receiving initial responses.
-- Don't use Bluetooth headphones or wired earphones to record the answer. Use the original mic and speak clearly while staying close to the mic.
 
 ## Contributing
 
 Contributions to ExamGPT are welcome! If you'd like to contribute, please follow the best open-source and contributing practices.
+Start by raising an issue related to any bugs or changes you would like to see!
 
 <!-- ## License
 This project is licensed under the [MIT License](LICENSE). -->
 
 ## Contact
 
-If you have any questions or need support, feel free to contact us at mayankbansal125@gmail.com
+If you have any questions or need support, feel free to contact at mayankbansal125@gmail.com
 
 ---
 
